@@ -25,7 +25,7 @@ def plot_financial_trends(ticker:str):
     plt.title(f"{ticker} Financial Trends (Past 4 Years)")
     plt.legend()  # This reads the 'label' strings we defined in step 3 and draws a key box
     plt.grid(True)  # Adds gridlines to make it easier to trace values with your eyes
-    plt.savefig("financial_chart.png", bbox_inches='tight')
+    plt.savefig("static/financial_chart.png", bbox_inches='tight')
     plt.close()
     return "Chart saved successfully as financial_chart.png"
 
@@ -62,8 +62,5 @@ agent_executor = create_agent(
     system_prompt="You are a precise financial AI agent."
 )
 
-result = agent_executor.invoke({
-    "messages": [HumanMessage(content="Can you give the net income for Microsoft (MSFT) over the last  year?")]
-})
-print(result["messages"][-1].content)
+
 
