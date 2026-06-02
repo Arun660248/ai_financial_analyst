@@ -30,9 +30,10 @@ Because this is a decoupled architecture, you must run the backend and frontend 
 
 **Terminal 1 (Backend):**
 ```bash
-
-python webapi.py 
+python webapi.py
+```
 
 **Terminal 1 (Frontend):**
 ```bash
 streamlit run stapp.py
+```
