@@ -3,6 +3,26 @@ import requests
 st.set_page_config(page_title="FinAI Analyst", page_icon="📈", layout="centered")
 st.title("📈 Financial AI Assistant")
 st.markdown("Ask me to extract revenue data or plot 4-year trends for any stock ticker.")
+# --- SIDEBAR GUIDELINES ---
+with st.sidebar:
+    st.header("📖 How to use this AI")
+    st.markdown("""
+    This is an autonomous financial agent. It doesn't just chat; it executes live Python code to fetch real-time stock market data and generate visualizations.
+
+    **🔍 What it can do:**
+    * Fetch real-time Total Revenue and Net Income.
+    * Generate 4-year historical trend charts.
+
+    **💡 Example Prompts to try:**
+    * *"What is Apple's (AAPL) recent revenue?"*
+    * *"Can you plot the financial trends for Microsoft (MSFT)?"*
+    * *"Show me the income for Tesla (TSLA)."*
+
+    **⚠️ Important Note:** Always try to include the company's official **Ticker Symbol** (like AAPL, MSFT, GOOG) so the data pipeline can accurately query the stock market API.
+    """)
+    st.divider()
+    st.caption("Built with LangChain, FastAPI, and Streamlit.")
+
 if "messages" not in st.session_state:
     st.session_state.messages=[]
 for message in st.session_state.messages:
