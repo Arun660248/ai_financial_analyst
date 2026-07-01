@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 import requests
 st.set_page_config(page_title="FinAI Analyst", page_icon="📈", layout="centered")
@@ -41,26 +42,37 @@ if prompt := st.chat_input("E.g., Can you plot the financial trends for Microsof
     with st.chat_message("assistant"):
         with st.spinner("Agent is researching..."):
             try:
-
+                api_url = os.getenv("API_URL", "http://localhost:8000")
                 response = requests.post(
-                    "http://localhost:8000/analyze",
+                    f"{api_url}/analyze",
                     json={"query": prompt}
                 )
 
                 if response.status_code == 200:
                     data = response.json()
                     answer_text = data.get("answer", "Error: No answer returned.")
-                    chart_url = data.get("chart_url")
+                    chart_path = data.get("chart_url")
+
+                    chart_bytes = None
+
+                    # If the backend generated a chart, fetch the bytes via internal Docker network
+                    if chart_path:
+                        img_response = requests.get(f"{api_url}{chart_path}")
+                        if img_response.status_code == 200:
+                            chart_bytes = img_response.content
 
                     # Render the text
                     st.markdown(answer_text)
 
-                    if chart_url:
-                        st.image(chart_url)
+                    # Render the chart using raw bytes
+                    if chart_bytes:
+                        st.image(chart_bytes)
+
+                    # Save the bytes into session state so it survives a page refresh
                     st.session_state.messages.append({
                         "role": "assistant",
                         "content": answer_text,
-                        "chart": chart_url
+                        "chart": chart_bytes
                     })
                 else:
                     st.error(f"Backend Server Error: {response.status_code}")

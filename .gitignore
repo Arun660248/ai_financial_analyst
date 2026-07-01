@@ -4,9 +4,9 @@
 venv/
 env/
 
-# Python Cache
+
 __pycache__/
 *.pyc
 
-# Output files
+
 financial_chart.png

@@ -18,7 +18,7 @@ async def analyze_query(request: ChatRequest):
 
         return {"status": "success",
             "answer": extracted_text,
-            "chart_url": "http://localhost:8000/static/financial_chart.png"}
+            "chart_url": "/static/financial_chart.png"}
     else:
         return {"status": "success",
         "answer": extracted_text,
