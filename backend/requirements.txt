@@ -1,8 +1,6 @@
 fastapi
 uvicorn
 pydantic
-streamlit
-requests
 yfinance
 pandas
 matplotlib

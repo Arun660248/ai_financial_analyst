@@ -80,8 +80,10 @@ def plot_financial_trends(ticker: str) -> str:
 
     # Save chart with strict padding constraint to prevent cropped labels
     import os
-    os.makedirs("static", exist_ok=True)
-    plt.savefig("static/financial_chart.png", bbox_inches='tight', dpi=150)
+    backend_dir = os.path.dirname(os.path.abspath(__file__))
+    static_dir = os.path.join(backend_dir, "static")
+    os.makedirs(static_dir, exist_ok=True)
+    plt.savefig(os.path.join(static_dir, "financial_chart.png"), bbox_inches='tight', dpi=150)
     plt.close(fig)
 
     return "Chart saved successfully as financial_chart.png"

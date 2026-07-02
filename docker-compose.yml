@@ -3,21 +3,21 @@ version: '3.8'
 services:
   backend:
     build:
-      context: .
-      dockerfile: Dockerfile.backend
+      context: ./backend
+      dockerfile: Dockerfile
     ports:
       - "8000:8000"
     env_file:
-      - .env  # This securely injects your GOOGLE_API_KEY into the container
+      - .env  # Securely injects GOOGLE_API_KEY into the container
 
   frontend:
     build:
-      context: .
-      dockerfile: Dockerfile.streamlit
+      context: ./frontend
+      dockerfile: Dockerfile
     ports:
       - "8501:8501"
     depends_on:
       - backend
     environment:
-      # This tells Streamlit exactly where to find the backend on the Docker network
+      # Directs Streamlit to backend service resolution on Docker network
       - API_URL=http://backend:8000
