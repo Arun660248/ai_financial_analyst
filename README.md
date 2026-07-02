@@ -1,5 +1,5 @@
 # Agentic AI Financial Analyst 📈🤖
-**Live Demo:** [finance-agent.arunjyoticode.me](https://finance-agent.arunjyoticode.me)
+**Live Demo:** [finai.arunjyoticode.me](https://finai.arunjyoticode.me/)
 
 An end-to-end, enterprise-grade **Agentic AI Financial Analyst** built to extract, analyze, and visualize real-time stock market data with cognitive precision. The system features a fully decoupled microservices architecture utilizing a FastAPI REST gateway backend and an interactive Streamlit frontend client.
 
@@ -9,16 +9,13 @@ Powered by **Google Gemini 2.5 Flash** as the core cognitive engine, the system 
 
 ## 🖥️ System Interface
 
-### 1. Financial AI Console (Welcome Screen)
-![Welcome Screen](docs/welcome_screen.png)
-
-### 2. Real-Time Financial Querying
+### 1. Real-Time Financial Querying
 ![Query Revenue](docs/query_revenue.png)
 
-### 3. Chronological Financial Analysis
+### 2. Chronological Financial Analysis
 ![Query Trends](docs/query_trends.png)
 
-### 4. Interactive Trend Visualizations
+### 3. Interactive Trend Visualizations
 ![Trend Chart](docs/trend_chart.png)
 
 ---
@@ -42,7 +39,6 @@ ai_financial_analyst/
 ├── scripts/
 │   └── test_agent.py    # CLI testing script to verify agent behavior locally
 ├── docs/
-│   ├── welcome_screen.png
 │   ├── query_revenue.png
 │   ├── query_trends.png
 │   └── trend_chart.png
